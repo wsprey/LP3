@@ -8,15 +8,6 @@ def fib_recursive(n):
     else:
         return fib_recursive(n - 1) + fib_recursive(n - 2)
 
-
-# Recursive series generator
-def fib_series_recursive(n):
-    series = []
-    for i in range(n):
-        series.append(fib_recursive(i))
-    return series
-
-
 # Non-recursive (iterative) function to get nth Fibonacci number
 def fib_iterative(n):
     if n <= 1:
@@ -26,28 +17,24 @@ def fib_iterative(n):
         a, b = b, a + b
     return b
 
-
-# Iterative series generator
-def fib_series_iterative(n):
-    series = []
-    a, b = 0, 1
-    for i in range(n):
-        series.append(a)
-        a, b = b, a + b
-    return series
-
-
 # ---- Main Program ----
 n = int(input("Enter the number of elements: "))
 
-# Recursive output
+# Recursive Fibonacci series
+recursive_series = [fib_recursive(i) for i in range(n)]
 print("\nUsing Recursive Method:")
-print("Fibonacci Series:", fib_series_recursive(n))
+print("Fibonacci Series:", recursive_series)
 print(f"Fibonacci({n}) =", fib_recursive(n - 1))
 
-# Iterative output
+# Iterative Fibonacci series
+iterative_series = []
+a, b = 0, 1
+for i in range(n):
+    iterative_series.append(a)
+    a, b = b, a + b
+
 print("\nUsing Non-Recursive (Iterative) Method:")
-print("Fibonacci Series:", fib_series_iterative(n))
+print("Fibonacci Series:", iterative_series)
 print(f"Fibonacci({n}) =", fib_iterative(n - 1))
 
 # ---- Time and Space Complexity ----
